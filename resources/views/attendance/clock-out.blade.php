@@ -3,7 +3,9 @@
 @section('title', 'Clock Out - Sistem Absensi')
 
 @section('styles')
-<style>
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}">
+@endsection
     .header {
         background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
         color: white;
@@ -165,9 +167,6 @@
     
     .work-summary h4 {
         color: #333;
-        margin-bottom: 10px;
-    }
-</style>
 @endsection
 
 @section('content')

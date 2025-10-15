@@ -3,7 +3,9 @@
 @section('title', 'Edit Profile - AttendanceHub')
 
 @section('styles')
-<style>
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/profile.css') }}">
+@endsection
     .edit-header {
         background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
         color: white;
@@ -287,9 +289,6 @@
 
     @keyframes spin {
         0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-</style>
 @endsection
 
 @section('content')

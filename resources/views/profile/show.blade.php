@@ -3,7 +3,9 @@
 @section('title', 'Profile - AttendanceHub')
 
 @section('styles')
-<style>
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/profile.css') }}">
+@endsection
     .profile-header {
         background: linear-gradient(135deg, var(--gray-800) 0%, var(--gray-900) 100%);
         color: white;
@@ -296,9 +298,6 @@
 
     .logout-btn:hover {
         background: var(--danger-color);
-        color: white;
-    }
-</style>
 @endsection
 
 @section('content')

@@ -3,7 +3,9 @@
 @section('title', 'Clock In - AttendanceHub')
 
 @section('styles')
-<style>
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}">
+@endsection
     .attendance-header {
         background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
         color: white;
@@ -332,9 +334,6 @@
         }
         100% {
             box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-        }
-    }
-</style>
 @endsection
 
 @section('content')

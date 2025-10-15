@@ -3,7 +3,9 @@
 @section('title', 'Attendance History - AttendanceHub')
 
 @section('styles')
-<style>
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}">
+@endsection
     .history-header {
         background: linear-gradient(135deg, var(--info-color) 0%, #1d4ed8 100%);
         color: white;
@@ -229,9 +231,6 @@
     .empty-state i {
         font-size: 4rem;
         margin-bottom: 1rem;
-        opacity: 0.5;
-    }
-</style>
 @endsection
 
 @section('content')

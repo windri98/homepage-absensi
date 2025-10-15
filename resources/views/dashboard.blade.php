@@ -3,7 +3,9 @@
 @section('title', 'Dashboard - AttendanceHub')
 
 @section('styles')
-<style>
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+@endsection
     :root {
         --primary-color: #6366f1;
         --primary-dark: #4f46e5;
@@ -440,9 +442,6 @@
         
         .actions-grid {
             grid-template-columns: repeat(4, 1fr);
-        }
-    }
-</style>
 @endsection
 
 @section('content')

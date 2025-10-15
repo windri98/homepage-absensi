@@ -1,0 +1,9 @@
+/* Import all external CSS files */
+@import url('../../../public/assets/css/main.css');
+@import url('../../../public/assets/css/auth.css');
+@import url('../../../public/assets/css/dashboard.css');
+@import url('../../../public/assets/css/tasks.css');
+@import url('../../../public/assets/css/attendance.css');
+@import url('../../../public/assets/css/profile.css');
+@import url('../../../public/assets/css/register.css');
+@import url('../../../public/assets/css/welcome.css');
