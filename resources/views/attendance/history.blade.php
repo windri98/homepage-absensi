@@ -3,234 +3,9 @@
 @section('title', 'Attendance History - AttendanceHub')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}">
-@endsection
-    .history-header {
-        background: linear-gradient(135deg, var(--info-color) 0%, #1d4ed8 100%);
-        color: white;
-        padding: 2rem 1.5rem;
-        position: relative;
-    }
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }} }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}?v={{ time() }} }}?v={{ time() }}">
 
-    .header-content {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-    }
-
-    .back-btn {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
-        border: none;
-        width: 40px;
-        height: 40px;
-        border-radius: var(--radius-md);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-
-    .history-content {
-        padding: 1.5rem;
-        background: var(--gray-50);
-        min-height: calc(100vh - 200px);
-    }
-
-    .filter-tabs {
-        display: flex;
-        background: white;
-        border-radius: var(--radius-lg);
-        padding: 0.25rem;
-        margin-bottom: 1.5rem;
-        box-shadow: var(--shadow);
-    }
-
-    .filter-tab {
-        flex: 1;
-        padding: 0.75rem;
-        text-align: center;
-        border-radius: var(--radius-md);
-        background: transparent;
-        border: none;
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: var(--gray-600);
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-
-    .filter-tab.active {
-        background: var(--primary-color);
-        color: white;
-        box-shadow: var(--shadow);
-    }
-
-    .attendance-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .attendance-card {
-        background: white;
-        border-radius: var(--radius-xl);
-        padding: 1.5rem;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--gray-100);
-        transition: all 0.2s ease;
-    }
-
-    .attendance-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
-    }
-
-    .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-
-    .date-info {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    .date-icon {
-        width: 40px;
-        height: 40px;
-        background: var(--gray-100);
-        border-radius: var(--radius-md);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.125rem;
-        color: var(--gray-600);
-    }
-
-    .date-text {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--gray-900);
-    }
-
-    .status-badge {
-        padding: 0.375rem 0.75rem;
-        border-radius: var(--radius-sm);
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.025em;
-    }
-
-    .status-present {
-        background: rgba(16, 185, 129, 0.1);
-        color: var(--success-color);
-    }
-
-    .status-late {
-        background: rgba(245, 158, 11, 0.1);
-        color: var(--warning-color);
-    }
-
-    .status-absent {
-        background: rgba(239, 68, 68, 0.1);
-        color: var(--danger-color);
-    }
-
-    .time-details {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .time-item {
-        text-align: center;
-        padding: 0.75rem;
-        background: var(--gray-50);
-        border-radius: var(--radius-md);
-        border: 1px solid var(--gray-200);
-    }
-
-    .time-label {
-        font-size: 0.75rem;
-        color: var(--gray-600);
-        margin-bottom: 0.25rem;
-    }
-
-    .time-value {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--gray-900);
-    }
-
-    .summary-stats {
-        background: white;
-        border-radius: var(--radius-xl);
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--gray-100);
-    }
-
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-    }
-
-    .stat-item {
-        text-align: center;
-        padding: 1rem;
-        background: var(--gray-50);
-        border-radius: var(--radius-md);
-        border: 1px solid var(--gray-200);
-    }
-
-    .stat-number {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 0.25rem;
-    }
-
-    .stat-number.present {
-        color: var(--success-color);
-    }
-
-    .stat-number.late {
-        color: var(--warning-color);
-    }
-
-    .stat-number.absent {
-        color: var(--danger-color);
-    }
-
-    .stat-label {
-        font-size: 0.75rem;
-        color: var(--gray-600);
-        text-transform: uppercase;
-        letter-spacing: 0.025em;
-    }
-
-    .empty-state {
-        text-align: center;
-        padding: 3rem 1rem;
-        color: var(--gray-500);
-    }
-
-    .empty-state i {
-        font-size: 4rem;
-        margin-bottom: 1rem;
 @endsection
 
 @section('content')
@@ -246,7 +21,7 @@
 <div class="history-content">
     <!-- Summary Stats -->
     <div class="summary-stats">
-        <h3 style="margin-bottom: 1rem; color: var(--gray-900);">This Month Summary</h3>
+        <h3 class="mb-3 text-dark">This Month Summary</h3>
         <div class="stats-grid">
             <div class="stat-item">
                 <div class="stat-number present">{{ $presentDays ?? 0 }}</div>
@@ -306,14 +81,14 @@
                     </div>
 
                     @if($attendance->total_hours > 0)
-                        <div class="time-item" style="margin-top: 0.5rem;">
+                        <div class="time-item mt-2">
                             <div class="time-label">Total Hours</div>
                             <div class="time-value">{{ number_format($attendance->total_hours, 1) }}h</div>
                         </div>
                     @endif
 
                     @if($attendance->work_type)
-                        <div style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--gray-600);">
+                        <div class="mt-2 text-small text-muted">
                             <i class="fas fa-briefcase"></i> {{ ucfirst($attendance->work_type) }} Work
                         </div>
                     @endif
@@ -352,3 +127,4 @@ function filterAttendance(status) {
 }
 </script>
 @endpush
+

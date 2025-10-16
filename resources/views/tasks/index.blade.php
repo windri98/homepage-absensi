@@ -3,8 +3,8 @@
 @section('title', 'Tasks - AttendanceHub')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/tasks.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }} }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('assets/css/tasks.css') }}?v={{ time() }} }}?v={{ time() }}">
 @endsection
 
 @section('content')
@@ -280,7 +280,7 @@ function showNotification(message, type = 'info') {
         animation: slideIn 0.3s ease;
     `;
     notification.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <div class="d-flex align-items-center gap-1">
             <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
             <span>${message}</span>
         </div>
@@ -322,3 +322,4 @@ style.textContent = `
 document.head.appendChild(style);
 </script>
 @endpush
+

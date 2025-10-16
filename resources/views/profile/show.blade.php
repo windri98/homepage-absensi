@@ -3,301 +3,8 @@
 @section('title', 'Profile - AttendanceHub')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/profile.css') }}">
-@endsection
-    .profile-header {
-        background: linear-gradient(135deg, var(--gray-800) 0%, var(--gray-900) 100%);
-        color: white;
-        padding: 2rem 1.5rem 3rem;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .profile-header::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
-        animation: rotate 30s linear infinite;
-    }
-
-    .header-content {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-    }
-
-    .profile-avatar {
-        width: 100px;
-        height: 100px;
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1rem;
-        font-size: 2.5rem;
-        color: white;
-        position: relative;
-        border: 4px solid rgba(255, 255, 255, 0.2);
-        box-shadow: var(--shadow-xl);
-    }
-
-    .avatar-edit {
-        position: absolute;
-        bottom: -5px;
-        right: -5px;
-        width: 36px;
-        height: 36px;
-        background: var(--success-color);
-        border-radius: 50%;
-        border: 3px solid white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-
-    .avatar-edit:hover {
-        transform: scale(1.1);
-        background: var(--secondary-dark);
-    }
-
-    .profile-name {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 0.25rem;
-    }
-
-    .profile-role {
-        font-size: 0.875rem;
-        opacity: 0.9;
-        margin-bottom: 0.5rem;
-    }
-
-    .profile-id {
-        font-size: 0.8125rem;
-        opacity: 0.7;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 0.25rem 0.75rem;
-        border-radius: var(--radius-sm);
-        display: inline-block;
-    }
-
-    .profile-content {
-        padding: 1.5rem;
-        background: var(--gray-50);
-        margin-top: -1.5rem;
-        position: relative;
-        z-index: 1;
-        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-        min-height: calc(100vh - 200px);
-    }
-
-    .profile-sections {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .profile-section {
-        background: white;
-        border-radius: var(--radius-xl);
-        padding: 1.5rem;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--gray-100);
-    }
-
-    .section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid var(--gray-200);
-    }
-
-    .section-title {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--gray-900);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .section-action {
-        color: var(--primary-color);
-        text-decoration: none;
-        font-size: 0.875rem;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        transition: color 0.2s ease;
-    }
-
-    .section-action:hover {
-        color: var(--primary-dark);
-    }
-
-    .info-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .info-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.75rem;
-        background: var(--gray-50);
-        border-radius: var(--radius-md);
-        border: 1px solid var(--gray-200);
-    }
-
-    .info-label {
-        font-size: 0.875rem;
-        color: var(--gray-600);
-        font-weight: 500;
-    }
-
-    .info-value {
-        font-size: 0.875rem;
-        color: var(--gray-900);
-        font-weight: 600;
-        text-align: right;
-    }
-
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-
-    .stat-card {
-        text-align: center;
-        padding: 1.25rem;
-        background: var(--gray-50);
-        border-radius: var(--radius-md);
-        border: 1px solid var(--gray-200);
-        transition: all 0.2s ease;
-    }
-
-    .stat-card:hover {
-        background: rgba(99, 102, 241, 0.05);
-        border-color: var(--primary-color);
-    }
-
-    .stat-number {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 0.25rem;
-    }
-
-    .stat-number.present { color: var(--success-color); }
-    .stat-number.late { color: var(--warning-color); }
-    .stat-number.absent { color: var(--danger-color); }
-    .stat-number.tasks { color: var(--info-color); }
-
-    .stat-label {
-        font-size: 0.75rem;
-        color: var(--gray-600);
-        text-transform: uppercase;
-        letter-spacing: 0.025em;
-    }
-
-    .action-buttons {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-    }
-
-    .action-btn {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        background: var(--gray-50);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-md);
-        text-decoration: none;
-        color: var(--gray-700);
-        transition: all 0.2s ease;
-    }
-
-    .action-btn:hover {
-        background: rgba(99, 102, 241, 0.05);
-        border-color: var(--primary-color);
-        color: var(--primary-color);
-    }
-
-    .action-btn.danger:hover {
-        background: rgba(239, 68, 68, 0.05);
-        border-color: var(--danger-color);
-        color: var(--danger-color);
-    }
-
-    .action-left {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    .action-icon {
-        width: 40px;
-        height: 40px;
-        background: white;
-        border-radius: var(--radius-md);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: var(--shadow-sm);
-    }
-
-    .action-text h4 {
-        font-size: 0.875rem;
-        font-weight: 600;
-        margin: 0 0 0.25rem 0;
-    }
-
-    .action-text p {
-        font-size: 0.75rem;
-        color: var(--gray-600);
-        margin: 0;
-    }
-
-    .logout-section {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--gray-200);
-    }
-
-    .logout-btn {
-        width: 100%;
-        padding: 1rem;
-        background: transparent;
-        border: 2px solid var(--danger-color);
-        border-radius: var(--radius-md);
-        color: var(--danger-color);
-        font-size: 0.875rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-
-    .logout-btn:hover {
-        background: var(--danger-color);
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }} }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('assets/css/profile.css') }}?v={{ time() }} }}?v={{ time() }}">
 @endsection
 
 @section('content')
@@ -306,7 +13,7 @@
         <div class="profile-avatar">
             <span>{{ substr($user->name, 0, 1) }}</span>
             <div class="avatar-edit">
-                <i class="fas fa-camera" style="font-size: 0.875rem;"></i>
+                <i class="fas fa-camera text-sm"></i>
             </div>
         </div>
         <h1 class="profile-name">{{ $user->name }}</h1>
@@ -317,14 +24,14 @@
 
 <div class="profile-content">
     @if(session('success'))
-        <div class="alert alert-success" style="margin-bottom: 1.5rem;">
+        <div class="alert alert-success mb-3">
             <i class="fas fa-check-circle"></i>
             {{ session('success') }}
         </div>
     @endif
 
     @if(session('error'))
-        <div class="alert alert-danger" style="margin-bottom: 1.5rem;">
+        <div class="alert alert-danger mb-3">
             <i class="fas fa-exclamation-circle"></i>
             {{ session('error') }}
         </div>
@@ -409,7 +116,7 @@
                 <a href="{{ route('profile.edit') }}" class="action-btn">
                     <div class="action-left">
                         <div class="action-icon">
-                            <i class="fas fa-edit" style="color: var(--primary-color);"></i>
+                            <i class="fas fa-edit text-primary"></i>
                         </div>
                         <div class="action-text">
                             <h4>Edit Profile</h4>
@@ -422,7 +129,7 @@
                 <a href="{{ route('attendance.history') }}" class="action-btn">
                     <div class="action-left">
                         <div class="action-icon">
-                            <i class="fas fa-history" style="color: var(--info-color);"></i>
+                            <i class="fas fa-history text-info"></i>
                         </div>
                         <div class="action-text">
                             <h4>Attendance History</h4>
@@ -435,7 +142,7 @@
                 <a href="{{ route('tasks.index') }}" class="action-btn">
                     <div class="action-left">
                         <div class="action-icon">
-                            <i class="fas fa-tasks" style="color: var(--warning-color);"></i>
+                            <i class="fas fa-tasks text-warning"></i>
                         </div>
                         <div class="action-text">
                             <h4>My Tasks</h4>
@@ -448,7 +155,7 @@
                 <button onclick="changePassword()" class="action-btn">
                     <div class="action-left">
                         <div class="action-icon">
-                            <i class="fas fa-lock" style="color: var(--success-color);"></i>
+                            <i class="fas fa-lock text-success"></i>
                         </div>
                         <div class="action-text">
                             <h4>Change Password</h4>
@@ -523,3 +230,4 @@ function changePassword() {
 }
 </script>
 @endpush
+

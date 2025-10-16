@@ -14,6 +14,9 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- Page Specific Styles -->
+    @yield('styles')
+    
     <style>
         :root {
             --primary-color: #6366f1;
@@ -354,10 +357,8 @@
                 font-size: 0.8125rem;
             }
         }
-
-        @yield('styles')
     </style>
-    
+
     @stack('head-scripts')
 </head>
 <body>
@@ -428,3 +429,4 @@
     @stack('scripts')
 </body>
 </html>
+

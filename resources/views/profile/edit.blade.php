@@ -3,8 +3,8 @@
 @section('title', 'Edit Profile - AttendanceHub')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/profile.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }} }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('assets/css/profile.css') }}?v={{ time() }} }}?v={{ time() }}">
 @endsection
     .edit-header {
         background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
@@ -308,14 +308,14 @@
         @method('PATCH')
         
         @if(session('success'))
-            <div class="alert alert-success" style="margin-bottom: 1.5rem;">
+            <div class="alert alert-success mb-3">
                 <i class="fas fa-check-circle"></i>
                 {{ session('success') }}
             </div>
         @endif
 
         @if($errors->any())
-            <div class="alert alert-danger" style="margin-bottom: 1.5rem;">
+            <div class="alert alert-danger mb-3">
                 <i class="fas fa-exclamation-circle"></i>
                 Please correct the errors below.
             </div>
@@ -559,3 +559,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 @endpush
+

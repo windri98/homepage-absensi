@@ -3,337 +3,8 @@
 @section('title', 'Clock In - AttendanceHub')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}">
-@endsection
-    .attendance-header {
-        background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
-        color: white;
-        padding: 2rem 1.5rem;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .attendance-header::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
-        animation: rotate 20s linear infinite;
-    }
-
-    @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-
-    .header-content {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-    }
-
-    .back-btn {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
-        border: none;
-        width: 40px;
-        height: 40px;
-        border-radius: var(--radius-md);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-
-    .back-btn:hover {
-        background: rgba(255, 255, 255, 0.3);
-        transform: translateY(-50%) scale(1.05);
-    }
-
-    .header-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin: 0;
-    }
-
-    .header-subtitle {
-        font-size: 0.875rem;
-        opacity: 0.9;
-        margin-top: 0.25rem;
-    }
-
-    .attendance-content {
-        padding: 1.5rem;
-        background: var(--gray-50);
-        min-height: calc(100vh - 200px);
-    }
-
-    .time-display {
-        background: white;
-        border-radius: var(--radius-xl);
-        padding: 2rem;
-        text-align: center;
-        margin-bottom: 1.5rem;
-        box-shadow: var(--shadow-lg);
-        border: 1px solid var(--gray-100);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .time-display::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    }
-
-    .current-time {
-        font-size: 3rem;
-        font-weight: 700;
-        color: var(--gray-900);
-        margin-bottom: 0.5rem;
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .current-date {
-        font-size: 1rem;
-        color: var(--gray-600);
-        font-weight: 500;
-    }
-
-    .location-card {
-        background: white;
-        border-radius: var(--radius-xl);
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--gray-100);
-    }
-
-    .location-header {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
-    }
-
-    .location-icon {
-        width: 40px;
-        height: 40px;
-        background: linear-gradient(135deg, var(--info-color) 0%, #1d4ed8 100%);
-        border-radius: var(--radius-md);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.125rem;
-    }
-
-    .location-title {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--gray-900);
-    }
-
-    .location-address {
-        font-size: 0.875rem;
-        color: var(--gray-600);
-        line-height: 1.5;
-        padding: 0.75rem;
-        background: var(--gray-50);
-        border-radius: var(--radius-md);
-        border: 1px solid var(--gray-200);
-    }
-
-    .clock-in-form {
-        background: white;
-        border-radius: var(--radius-xl);
-        padding: 1.5rem;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--gray-100);
-        margin-bottom: 6rem;
-    }
-
-    .form-header {
-        text-align: center;
-        margin-bottom: 1.5rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid var(--gray-200);
-    }
-
-    .form-header h3 {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: var(--gray-900);
-        margin-bottom: 0.5rem;
-    }
-
-    .form-header p {
-        font-size: 0.875rem;
-        color: var(--gray-600);
-        margin: 0;
-    }
-
-    .photo-upload-area {
-        border: 2px dashed var(--gray-300);
-        border-radius: var(--radius-md);
-        padding: 2rem;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        background: var(--gray-50);
-        margin-bottom: 1.5rem;
-    }
-
-    .photo-upload-area:hover {
-        border-color: var(--primary-color);
-        background: rgba(99, 102, 241, 0.05);
-    }
-
-    .photo-upload-area.has-file {
-        border-color: var(--success-color);
-        background: rgba(16, 185, 129, 0.05);
-    }
-
-    .upload-icon {
-        width: 60px;
-        height: 60px;
-        background: var(--gray-200);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1rem;
-        font-size: 1.5rem;
-        color: var(--gray-500);
-        transition: all 0.3s ease;
-    }
-
-    .photo-upload-area:hover .upload-icon {
-        background: var(--primary-color);
-        color: white;
-        transform: scale(1.1);
-    }
-
-    .upload-text {
-        font-size: 0.875rem;
-        color: var(--gray-600);
-        margin-bottom: 0.5rem;
-    }
-
-    .upload-hint {
-        font-size: 0.75rem;
-        color: var(--gray-500);
-    }
-
-    .photo-preview {
-        margin-top: 1rem;
-        text-align: center;
-    }
-
-    .photo-preview img {
-        max-width: 100%;
-        max-height: 200px;
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow);
-    }
-
-    .status-card {
-        background: white;
-        border-radius: var(--radius-xl);
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--gray-100);
-    }
-
-    .status-card.success {
-        background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
-        border-color: var(--success-color);
-    }
-
-    .clock-in-button {
-        width: 100%;
-        height: 60px;
-        background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
-        color: white;
-        border: none;
-        border-radius: var(--radius-lg);
-        font-size: 1.125rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.75rem;
-        margin-top: 1.5rem;
-    }
-
-    .clock-in-button::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        transition: left 0.5s;
-    }
-
-    .clock-in-button:hover::before {
-        left: 100%;
-    }
-
-    .clock-in-button:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-xl);
-    }
-
-    .clock-in-button:active {
-        transform: translateY(0);
-    }
-
-    .clock-in-button:disabled {
-        background: var(--gray-400);
-        cursor: not-allowed;
-        transform: none;
-    }
-
-    .button-icon {
-        font-size: 1.25rem;
-    }
-
-    .pulse {
-        animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-        }
-        70% {
-            box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
-        }
-        100% {
-            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }} }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}?v={{ time() }} }}?v={{ time() }}">
 @endsection
 
 @section('content')
@@ -380,7 +51,7 @@
     @if(isset($todayAttendance) && $todayAttendance && $todayAttendance->clock_in_time)
         <!-- Already Clocked In Status -->
         <div class="status-card success animate-slide-in">
-            <div class="alert alert-info" style="margin: 0;">
+            <div class="alert alert-info m-0">
                 <i class="fas fa-check-circle"></i>
                 <div>
                     <strong>Already Clocked In!</strong><br>
@@ -417,7 +88,7 @@
 
             <div class="form-group">
                 <label class="form-label">
-                    <i class="fas fa-briefcase" style="margin-right: 0.5rem;"></i>
+                    <i class="fas fa-briefcase mr-1"></i>
                     Work Type
                 </label>
                 <select name="work_type" class="form-select" required>
@@ -430,7 +101,7 @@
 
             <div class="form-group">
                 <label class="form-label">
-                    <i class="fas fa-camera" style="margin-right: 0.5rem;"></i>
+                    <i class="fas fa-camera mr-1"></i>
                     Photo
                 </label>
                 <div class="photo-upload-area" onclick="document.getElementById('photo').click()">
@@ -440,13 +111,13 @@
                     <div class="upload-text">Take or Upload Photo</div>
                     <div class="upload-hint">Tap to capture your check-in photo</div>
                 </div>
-                <input type="file" id="photo" name="photo" style="display: none;" accept="image/*" capture="camera">
+                <input type="file" id="photo" name="photo" class="d-none" accept="image/*" capture="camera">
                 <div class="photo-preview" id="photo-preview"></div>
             </div>
 
             <div class="form-group">
                 <label class="form-label">
-                    <i class="fas fa-sticky-note" style="margin-right: 0.5rem;"></i>
+                    <i class="fas fa-sticky-note mr-1"></i>
                     Notes (Optional)
                 </label>
                 <textarea name="notes" class="form-textarea" rows="3" placeholder="Any additional notes for today...">{{ old('notes') }}</textarea>
@@ -530,10 +201,10 @@ document.getElementById('photo').addEventListener('change', function(e) {
         reader.onload = function(e) {
             uploadArea.classList.add('has-file');
             uploadArea.innerHTML = `
-                <div class="upload-icon" style="background: var(--success-color);">
+                <div class="upload-icon success">
                     <i class="fas fa-check"></i>
                 </div>
-                <div class="upload-text" style="color: var(--success-color);">Photo Selected</div>
+                <div class="upload-text success">Photo Selected</div>
                 <div class="upload-hint">Tap to change photo</div>
             `;
             preview.innerHTML = `<img src="${e.target.result}" alt="Photo preview">`;
@@ -565,3 +236,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 @endpush
+

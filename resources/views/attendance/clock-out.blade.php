@@ -3,8 +3,8 @@
 @section('title', 'Clock Out - Sistem Absensi')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }} }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}?v={{ time() }} }}?v={{ time() }}">
 @endsection
     .header {
         background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
@@ -218,7 +218,7 @@
         
         <!-- Today's Work Summary -->
         <div class="attendance-info">
-            <h4 style="margin-bottom: 15px; color: #333;">Today's Work Summary</h4>
+            <h4 class="mb-3 text-dark">Today's Work Summary</h4>
             <div class="info-row">
                 <span class="info-label">Clock In:</span>
                 <span class="info-value">{{ $todayAttendance->clock_in_time->format('H:i:s') }}</span>
@@ -244,7 +244,7 @@
     @else
         <!-- Today's Attendance Info -->
         <div class="attendance-info">
-            <h4 style="margin-bottom: 15px; color: #333;">Today's Attendance</h4>
+            <h4 class="mb-3 text-dark">Today's Attendance</h4>
             <div class="info-row">
                 <span class="info-label">Clock In Time:</span>
                 <span class="info-value">{{ $todayAttendance->clock_in_time->format('H:i:s') }}</span>
@@ -269,7 +269,7 @@
             
             <div class="work-summary">
                 <h4>Work Summary</h4>
-                <p style="font-size: 14px; color: #666; margin: 0;">
+                <p class="text-small text-muted m-0">
                     Please provide a brief summary of your work today before clocking out.
                 </p>
             </div>
@@ -339,3 +339,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 @endpush
+

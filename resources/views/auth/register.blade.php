@@ -7,14 +7,14 @@
 @endphp
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }} }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('assets/css/register.css') }}?v={{ time() }} }}?v={{ time() }}">
 @endsection
 
 @section('content')
 <div class="header">
     <h1>SISTEM ABSENSI<br>KARYAWAN</h1>
-    <div class="illustration" style="background-image: url('{{ asset('assets/image/register.png') }}');"></div>
+    <div class="illustration register-bg"></div>
 </div>
 
 <div class="register-container">
@@ -79,3 +79,4 @@
     </div>
 </div>
 @endsection
+
