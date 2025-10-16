@@ -1,58 +1,24 @@
 @extends('layouts.app')
 
-@section('title', 'Clock Out - Sistem Absensi')
+@section('title', 'Clock Out - AttendanceHub')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }} }}?v={{ time() }}">
-<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}?v={{ time() }} }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}?v={{ time() }}">
 @endsection
-    .header {
-        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
-        color: white;
-        padding: 20px;
-        text-align: center;
-        position: relative;
-    }
-    
-    .back-btn {
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        color: white;
-        font-size: 18px;
-        cursor: pointer;
-    }
-    
-    .container {
-        flex: 1;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .time-display {
-        background: white;
-        border-radius: 15px;
-        padding: 25px;
-        text-align: center;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .current-time {
-        font-size: 28px;
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 5px;
-    }
-    
-    .current-date {
-        font-size: 16px;
-        color: #666;
-    }
+
+@section('content')
+<div class="attendance-header" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);">
+    <div class="header-content">
+        <button class="back-btn" onclick="window.location.href='{{ route('dashboard') }}'">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="header-title">Clock Out</h1>
+        <p class="header-subtitle">End your productive day</p>
+    </div>
+</div>
+
+<div class="attendance-content">
     
     .attendance-info {
         background: white;

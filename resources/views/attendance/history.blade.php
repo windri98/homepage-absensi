@@ -3,9 +3,8 @@
 @section('title', 'Attendance History - AttendanceHub')
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }} }}?v={{ time() }}">
-<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}?v={{ time() }} }}?v={{ time() }}">
-
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }}">
+<link rel="stylesheet" href="{{ asset('assets/css/attendance.css') }}?v={{ time() }}">
 @endsection
 
 @section('content')
