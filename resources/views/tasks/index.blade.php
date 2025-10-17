@@ -11,10 +11,15 @@
 <div class="tasks-header">
     <div class="header-content">
         <div class="header-text">
-            <h1>My Tasks</h1>
+            <h1>Tasks</h1>
             <p>Manage your daily activities</p>
         </div>
         <div class="header-actions">
+            @if(auth()->user()->role === 'manager' || auth()->user()->role === 'admin')
+                <a href="{{ route('tasks.create') }}" class="header-btn btn-primary" title="Create New Task">
+                    <i class="fas fa-plus"></i> Create Task
+                </a>
+            @endif
             <a href="{{ route('dashboard') }}" class="header-btn" title="Back to Dashboard">
                 <i class="fas fa-arrow-left"></i>
             </a>
@@ -76,7 +81,7 @@
 
                             <div class="task-meta-item">
                                 <i class="fas fa-user"></i>
-                                <span>{{ $assignment->task->createdBy->name }}</span>
+                                <span>{{ $assignment->task->createdBy ? $assignment->task->createdBy->name : '-' }}</span>
                             </div>
                         </div>
 
@@ -166,9 +171,17 @@
                                 </span>
                                 
                                 <div class="action-buttons">
-                                    <a href="{{ route('tasks.show', $task) }}" class="btn btn-primary">
-                                        <i class="fas fa-eye"></i> View Details
+                                    <a href="{{ route('tasks.show', $task) }}" class="btn btn-outline">
+                                        <i class="fas fa-eye"></i> View
                                     </a>
+                                    @if($task->created_by === auth()->id() || auth()->user()->role === 'admin')
+                                        <a href="{{ route('tasks.edit', $task) }}" class="btn btn-warning">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <button onclick="confirmDelete({{ $task->id }})" class="btn btn-danger">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </button>
+                                    @endif
                                 </div>
                             </div>
                         </div>

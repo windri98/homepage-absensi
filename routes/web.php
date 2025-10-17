@@ -19,11 +19,11 @@ use App\Http\Controllers\ProfileController;
 */
 
 // Welcome page
-Route::get('/', [AuthController::class, 'welcome'])->name('welcome');
+// Route::get('/', [AuthController::class, 'welcome'])->name('welcome');
 
 // Authentication routes
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::get('/', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -54,6 +54,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/{task}', [TaskController::class, 'show'])->name('show');
         Route::patch('/assignments/{assignment}/status', [TaskController::class, 'updateStatus'])->name('assignments.status');
         Route::get('/manage/all', [TaskController::class, 'manage'])->name('manage');
+        Route::get('/{task}/edit', [TaskController::class, 'edit'])->name('edit');
+        Route::put('/{task}', [TaskController::class, 'update'])->name('update');
+        Route::delete('/{task}', [TaskController::class, 'destroy'])->name('destroy');
     });
 
     // Profile routes
